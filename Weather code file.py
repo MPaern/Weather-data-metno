@@ -133,8 +133,7 @@ all_ncfiles = [
 ]
 
 if int((end_date - start_date).days) * 24 != len(all_ncfiles):
-    print("Warning: number of files retrieved does not match number of hours \
-          between start/end date.")
+    print("Data retrieved for less than 24 timepoints")
 
 # find the (2d) index of the closest data point to each of our locations
 # OBS: assumption: lat/lon grids are constant, i.e. the weather observation
@@ -266,4 +265,5 @@ with open(f"data/MissingWeatherData{n_batch}", "w") as outfile:
 # Load data (overwrites "data/WeatherData.csv")
 
 # data.to_csv("data/WeatherData.csv")
+
 
