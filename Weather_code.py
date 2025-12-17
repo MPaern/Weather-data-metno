@@ -45,7 +45,7 @@ filepath = "C:/Users/Maris/Documents/data/Coordinates 2024 CM.csv"   # change fo
 df = pd.read_csv(filepath)
 
 if "Latitude" not in df.columns or "Longitude" not in df.columns:
-    print("Input file is missing required column 'Latitude'.")
+    print("Input file is missing required column 'Latitude/Longitude'.")
     sys.exit()
 
 # USER INPUT: Range of dates to retrieve data for
@@ -113,13 +113,13 @@ def find_index_of_closest_datapoint(
     return int(indices[0][0]), int(indices[1][0])
 
 
-# get every filepath for every date and every hour from 5pm to 6am ## change the times if needed
+# get every filepath for every date and every hour from xpm to xam ## change the times if needed, hours 0-6, last hour pulled will be 5, hours 19-24, first hour will be 19
 
 dates = [
     date_.strftime("%Y/%m/%d")
     for date_ in daterange(start_date, end_date)
 ]
-hours = [i for i in range(0, 6)] + [e for e in range(6, 24)]
+hours = [i for i in range(0, 11)] + [e for e in range(16, 24)] 
 
 all_ncfiles = [
     (
@@ -265,6 +265,7 @@ with open(f"data/MissingWeatherData{n_batch}", "w") as outfile:
 # Load data (overwrites "data/WeatherData.csv")
 
 # data.to_csv("data/WeatherData.csv")
+
 
 
 
