@@ -41,7 +41,7 @@ import xarray as xr
 # The file should contain one column describing the locations' latitude (labeled Latitude),
 # and one column describing the locations' longitude (labeled Longitude),
 # If the locations also have a column labeled "Name", this will be inluded in the output data
-filepath = "C:/Users/Maris/Documents/data/Coordinates 2024 CM.csv"
+filepath = "C:/Users/Maris/Documents/data/Coordinates 2024 CM.csv"   # change for right location
 df = pd.read_csv(filepath)
 
 if "Latitude" not in df.columns or "Longitude" not in df.columns:
@@ -49,9 +49,9 @@ if "Latitude" not in df.columns or "Longitude" not in df.columns:
     sys.exit()
 
 # USER INPUT: Range of dates to retrieve data for
-start_date = date(2024, 6, 14)  # First date: 2024 May 31st
-end_date = date(2024, 10, 18)  # 2024 November 2nd (last included date November 1st)
-n_batch = 10  # Increase for with each run to avoid overwriting previously loaded batch
+start_date = date(2024, 6, 14)  # First date
+end_date = date(2024, 10, 18)  # Last date (date written here not included in output)
+n_batch = 0  # Increase for with each run to avoid overwriting previously loaded batch
 print(f"Fetching weather data from {start_date} to {end_date}")
 
 
@@ -265,5 +265,6 @@ with open(f"data/MissingWeatherData{n_batch}", "w") as outfile:
 # Load data (overwrites "data/WeatherData.csv")
 
 # data.to_csv("data/WeatherData.csv")
+
 
 
